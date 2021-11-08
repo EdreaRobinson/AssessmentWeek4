@@ -7,74 +7,82 @@
     <button id="complimentButton">Get a compliment</button>
     <button id="fortuneButton">Get a fortune</button>
     <br>
-    <br>
-    <form>
-         <label for="goal">What is your goal?</label><br>
-        <input type="text" id="goal" name="goal" size="50"><br>
+    <header>
+      <h1>My Current Goals</h1>
+    </header>
+    <main>   
+
+      <form>
+          <label for="goal"><b>What is your goal?</b></label><br>
+          <input type="text" id="goal" name="goal" size="50"><br>
+        <br>
+          <label for="img"><b>Paste an image URL</b></label><br>
+          <input type="text" id="img" name="img"><br>
+        <br>
+          <!-- <label for="completion"><b>How much of this goal have you completed?</b></label><br>
+       <br> <div>
+          <input type="radio" id="percent25" name="percent" value=25>
+          <label for="percent25">25%</label><br>
       <br>
-        
-        <label for="completion">How much of this goal have you completed?</label><br>
-       <br>
-        <input type="radio" id="percent25" name="percent25" value="This goal is 25% complete">
-        <label for="percent25">25%</label><br>
+          <input type="radio" id="percent50" name="percent" value=50>
+          <label for="percent50">50%</label><br>
       <br>
-        <input type="radio" id="percent50" name="percent50" value="This goal is 50% complete">
-        <label for="percent50">50%</label><br>
+          <input type="radio" id="percent75" name="percent" value=75>
+          <label for="percent75">75%</label><br>
       <br>
-        <input type="radio" id="percent75" name="percent75" value="This goal is 75% complete">
-        <label for="percent75">75%</label><br>
-      <br>
-        <input type="radio" id="percent100" name="percent100" value="This goal has been completed">
-        <label for="percent100">100%</label>
+          <input type="radio" id="percent100" name="percent" value=100>
+          <label for="percent100">100%</label>
+        </div>   -->
       <br>
       <br>
-        <label for="target">What is your target completion date?</label><br><br><input type="date" id="target" name="target"><br>
+          <label for="target"><b>What is your target completion date?</b></label><br><br><input type="date" id="target" name="target"><br>
       <br>
-        <label for="tips">Below are 8 tips to help you complete your goal. Select the ones that are true.</label><br>
+          <label for="tips"><b>Below are 8 tips to help you complete your goal. Select the ones that are true.</b></label><br>
       <br>      
-        <input type="checkbox" id="tip1" name="tip1" value="This goal aligns with my values">
-        <label for="tip1">My goal aligns with my values</label><br>
-        <input type="checkbox" id="tip2" name="tip2" value="This goal is controlled by me">
-        <label for="tip2">Completing this goal depends solely on me</label><br>
-        <input type="checkbox" id="tip3" name="tip3" value="I have a realistic target date">
-        <label for="tip3">My target date is realistic</label><br>
-        <input type="checkbox" id="tip4" name="tip4" value="My mindset is positive about this goal">
-        <label for="tip4">I have a positive mindset about this goal</label><br>
-        <input type="checkbox" id="tip5" name="tip5" value="I have told others about this goal">
-        <label for="tip5">I have told others about this goal</label><br>
-        <input type="checkbox" id="tip6" name="tip6" value="Making time to work on this goal is a priority">
-        <label for="tip6">I prioritize time to work on this goal</label><br>
-        <input type="checkbox" id="tip7" name="tip7" value="I have a deadline set to complete this goal">
-        <label for="tip7">I have set a deadline</label><br>
-        <input type="checkbox" id="tip8" name="tip8" value="I have support">
-        <label for="tip">I have the support of my family and/or friends</label><br>
+          <input type="checkbox" id="tip1" name="tips" value="This goal aligns with my values">
+          <label for="tip1">My goal aligns with my values</label><br>
+          <input type="checkbox" id="tip2" name="tips" value="This goal is controlled by me">
+          <label for="tip2">Completing this goal depends solely on me</label><br>
+          <input type="checkbox" id="tip3" name="tips" value="I have a realistic target date">
+          <label for="tip3">My target date is realistic</label><br>
+          <input type="checkbox" id="tip4" name="tips" value="My mindset is positive about this goal">
+          <label for="tip4">I have a positive mindset about this goal</label><br>
+          <input type="checkbox" id="tip5" name="tips" value="I have told others about this goal">
+          <label for="tip5">I have told others about this goal</label><br>
+          <input type="checkbox" id="tip6" name="tips" value="Making time to work on this goal is a priority">
+          <label for="tip6">I prioritize time to work on this goal</label><br>
+          <input type="checkbox" id="tip7" name="tips" value="I have a deadline set to complete this goal">
+          <label for="tip7">I have set a deadline</label><br>
+          <input type="checkbox" id="tip8" name="tips" value="I have support">
+          <label for="tip">I have the support of my family and/or friends</label><br>
       <br>
-      <input type="submit" value="Add goal to my list">
-    </form>
+          <input type="submit"value="Add goal to my list">
+      </form>
+
+      <section id="goals-container"></section>
+
+      <script>
+        document.getElementById("complimentButton").onclick = function () {
+          axios.get("http://localhost:4000/api/compliment/")
+          .then(function (response) {
+            const data = response.data;
+            alert(data);
+          });
+        };
+        document.getElementById("fortuneButton").onclick = function () {
+          axios.get("http://localhost:4000/api/fortune/")
+          .then(function (response) {
+            const data = response.data;
+            alert(data);
+          });
+        };
+      
+        
+      </script>
+    </main>
+
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script>
-      document.getElementById("complimentButton").onclick = function () {
-        axios.get("http://localhost:4000/api/compliment/")
-            .then(function (response) {
-              const data = response.data;
-              alert(data);
-            });
-      };
-      document.getElementById("fortuneButton").onclick = function () {
-        axios.get("http://localhost:4000/api/fortune/")
-            .then(function (response) {
-              const data = response.data;
-              alert(data);
-            });
-      };
-      document.getElementById("fortuneButton").onclick = function () {
-        axios.get("http://localhost:4000/api/fortune/")
-            .then(function (response) {
-              const data = response.data;
-              alert(data);
-            });
-      };
-    </script>
-  </body>
+    <script src="index.js"></script>
+</body>
 </html>
